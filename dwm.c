@@ -2135,7 +2135,7 @@ zoom(const Arg *arg)
 
 	if (!selmon->lt[selmon->sellt]->arrange || !c || c->isfloating)
 		return;
-	if (c == nexttiled(selmon->clients) && !(c = nexttiled(c->next)))
+	if (c == nexttiled(selmon->clients))// && !(c = nexttiled(c->next)))
 		return;
 	pop(c);
 }
