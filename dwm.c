@@ -187,6 +187,7 @@ static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void pop(Client *c);
 static void propertynotify(XEvent *e);
+static void pushstack(const Arg *arg);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
@@ -1253,6 +1254,39 @@ propertynotify(XEvent *e)
 		if (ev->atom == netatom[NetWMWindowType])
 			updatewindowtype(c);
 	}
+}
+
+void
+pushstack(const Arg *arg)
+{
+	//Client *c = selmon->sel;
+	selmon->sel = selmon->sel->next;
+
+	// if (!selmon->lt[selmon->sellt]->arrange || !c || c->isfloating)
+	// 	return;
+	// if (c == nexttiled(selmon->clients))// && !(c = nexttiled(c->next)))
+	// 	return;
+	// pop(c);
+
+	// if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
+	// 	return;
+	// if (arg->i > 0) {
+	// 	for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
+	// 	if (!c)
+	// 		for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
+	// } else {
+	// 	for (i = selmon->clients; i != selmon->sel; i = i->next)
+	// 		if (ISVISIBLE(i))
+	// 			c = i;
+	// 	if (!c)
+	// 		for (; i; i = i->next)
+	// 			if (ISVISIBLE(i))
+	// 				c = i;
+	// }
+	// if (c) {
+	// 	focus(c);
+	// 	restack(selmon);
+	// }
 }
 
 void
