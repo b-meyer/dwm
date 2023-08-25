@@ -728,7 +728,7 @@ drawbar(Monitor *m)
 {
 	int x, y = borderpx, w, tw = 0;
 	int th = bh - borderpx * 2;
-	int mw = m->ww - borderpx * 2;
+	int mw = m->ww - borderpx * 2 - sp * 2;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
@@ -743,8 +743,8 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		tw = TEXTW(stext) - lrpad + 4; /* 2px right padding */
-		drw_text(drw, mw - tw, y, tw, th, -borderpx - sp, stext, 0);
+		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+		drw_text(drw, mw - tw, y, tw + borderpx + sp, th, 0, stext, 0);
 	}
 
 	for (c = m->clients; c; c = c->next) {
