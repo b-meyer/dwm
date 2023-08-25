@@ -743,7 +743,7 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		tw = TEXTW(stext) - lrpad / 2; /* 2px right padding */
+		tw = TEXTW(stext) - lrpad / 2;
 		drw_text(drw, mw - tw, y, tw + borderpx, th, 0, stext, 0);
 	}
 
